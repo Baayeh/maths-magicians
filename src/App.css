@@ -9,11 +9,12 @@ section#calcWrapper {
   margin: 30px auto;
 }
 
-div#results {
+div#outcome {
   background-color: gray;
-  padding: 14px 10px;
+  padding: 17px 10px;
   text-align: end;
   color: #fff;
+  height: 60px;
 }
 
 div#button-container {
