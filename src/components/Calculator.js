@@ -1,27 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { buttons, operators } from './Buttons';
 import calculate from '../logic/calculate';
 
 const Calculator = () => {
-  const [state, setState] = useState({
-    total: null,
-    next: null,
-  });
-
-  const handleCalculation = e => {
-    setState(state => calculate(state, e.target.innerText));
-  };
-
-  let outcome = 0;
-
-  if (state.total === null && state.next !== null) {
-    outcome = state.next;
-  } else if (state.total !== null && state.next === null) {
-    outcome = state.total;
-  } else {
-    outcome = state.next;
-  }
-
   return (
     <section id="calcWrapper">
       <div id="outcome">
@@ -35,7 +16,7 @@ const Calculator = () => {
               type="button"
               key={button.name}
               className="btn"
-              onClick={handleCalculation}
+              onClick={this.handleCalculation}
             >
               {button.value}
             </button>
@@ -43,11 +24,15 @@ const Calculator = () => {
           <button
             type="button"
             className="btn btn-zero"
-            onClick={handleCalculation}
+            onClick={this.handleCalculation}
           >
             0
           </button>
-          <button type="button" className="btn" onClick={handleCalculation}>
+          <button
+            type="button"
+            className="btn"
+            onClick={this.handleCalculation}
+          >
             .
           </button>
         </div>
@@ -57,7 +42,7 @@ const Calculator = () => {
               type="button"
               key={operator.name}
               className="btn"
-              onClick={handleCalculation}
+              onClick={this.handleCalculation}
             >
               {operator.value}
             </button>
@@ -69,3 +54,83 @@ const Calculator = () => {
 };
 
 export default Calculator;
+
+// class Calculator extends React.Component {
+//   constructor(props) {
+//     super(props);
+//     this.state = {
+//       total: null,
+//       next: null,
+//     };
+
+//     this.handleCalculation = this.handleCalculation.bind(this);
+//   }
+
+//   handleCalculation = e => {
+//     this.setState(state => calculate(state, e.target.innerText));
+//   };
+
+//   render() {
+//     const { total, next } = this.state;
+//     let outcome = 0;
+
+//     if (total === null && next !== null) {
+//       outcome = next;
+//     } else if (total !== null && next === null) {
+//       outcome = total;
+//     } else {
+//       outcome = next;
+//     }
+
+//     return (
+//       <section id="calcWrapper">
+//         <div id="outcome">
+//           <span>{outcome}</span>
+//         </div>
+
+//         <div id="button-container">
+//           <div className="numbers">
+//             {buttons.map(button => (
+//               <button
+//                 type="button"
+//                 key={button.name}
+//                 className="btn"
+//                 onClick={this.handleCalculation}
+//               >
+//                 {button.value}
+//               </button>
+//             ))}
+//             <button
+//               type="button"
+//               className="btn btn-zero"
+//               onClick={this.handleCalculation}
+//             >
+//               0
+//             </button>
+//             <button
+//               type="button"
+//               className="btn"
+//               onClick={this.handleCalculation}
+//             >
+//               .
+//             </button>
+//           </div>
+//           <div className="operators">
+//             {operators.map(operator => (
+//               <button
+//                 type="button"
+//                 key={operator.name}
+//                 className="btn"
+//                 onClick={this.handleCalculation}
+//               >
+//                 {operator.value}
+//               </button>
+//             ))}
+//           </div>
+//         </div>
+//       </section>
+//     );
+//   }
+// }
+
+// export default Calculator;
