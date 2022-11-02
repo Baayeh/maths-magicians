@@ -10,7 +10,7 @@ const Navbar = () => (
       Guru
     </Link>
     <div className="nav-links flex items-center gap-5">
-      <NavLink to='/' className='nav-link' data-toggle='tooltip' title='Home'>
+      <NavLink to='/' className={`nav-link ${(isActive) => isActive ? 'active' : ''}`} data-toggle='tooltip' title='Home' end>
         <span className='home-icon md:hidden'>
           <CiHome className='text-2xl' />
         </span>

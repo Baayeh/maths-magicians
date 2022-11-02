@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from 'prop-types'
 
 const Button = ({ label, action }) => (
-    <button type="button" className="key-box text-primary" onClick={() => action(label)}>{label}</button>
+    <button type="button" className="key-box text-primary font-bold" onClick={() => action(label)}>{label}</button>
   )
 
   Button.propTypes = {

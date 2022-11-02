@@ -21,10 +21,15 @@
   .nav-link {
     @apply relative hover:text-secondary md:hover:text-white md:hover:before:absolute md:hover:before:bottom-0 md:hover:before:w-full md:hover:before:h-0.5 md:hover:before:bg-secondary transition-all ease-out duration-700;
   }
+
+  .nav-link.active {
+    @apply text-secondary md:text-white md:before:absolute md:before:bottom-0 md:before:w-full md:before:h-0.5 md:before:bg-secondary;
+  }
 }
 
 #calculator {
-  background-color: wheat;
+  border-radius: 50px;
+  overflow: hidden;
 }
 
 #calculator .result-pane {
@@ -34,8 +39,9 @@
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  padding: 10px;
-  color: #fff;
+  padding: 10px 3rem 10px;
+  color: #181d27;
+  font-size: 1.4rem;
 }
 
 .keys-container {
@@ -62,5 +68,7 @@
 
 .keys-container .key-box:nth-child(4n),
 .keys-container .key-box:last-child {
-  background: orange;
+  background: #dd1818;
+  color: white;
+  font-size: 1.1rem;
 }
