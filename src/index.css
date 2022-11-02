@@ -1,5 +1,66 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+    font-family: 'Comfortaa', cursive;
+  }
+}
+
+@layer components {
+  .nav-link {
+    @apply relative hover:text-secondary md:hover:text-white md:hover:before:absolute md:hover:before:bottom-0 md:hover:before:w-full md:hover:before:h-0.5 md:hover:before:bg-secondary transition-all ease-out duration-700;
+  }
+}
+
+#calculator{
+  background-color: wheat;
+}
+
+#calculator .result-pane{
+  width: 100%;
+  height: 50px;
+  background-color: #a9a6a6;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 10px;
+  color: #fff;
+}
+
+.keys-container{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.keys-container .key-box{
+  flex-basis: 25%;
+  height: 55px;
+  background: #fff;
+  border: 1px solid #ebe9e9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.keys-container .key-box:nth-child(17){
+  flex-basis: 50%;
+}
+
+.keys-container .key-box:nth-child(4n),
+.keys-container .key-box:last-child{
+  background: orange;
 }

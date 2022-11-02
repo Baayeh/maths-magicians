@@ -1,71 +1,45 @@
-import React, { useState } from 'react';
-import { buttons, operators } from './Buttons';
-import calculate from '../logic/calculate';
+import React, { useState } from "react";
+import Button from "./Button";
+import keys from "./Keys";
+import calculate from '../logic/calculate'
 
 const Calculator = () => {
   const [state, setState] = useState({
     total: null,
-    next: null,
+    next: null
   });
 
-  let outcome = 0;
-
-  if (state.total === null && state.next !== null) {
-    outcome = state.next;
-  } else if (state.total !== null && state.next === null) {
-    outcome = state.total;
+  const handleClick = (btn) => {
+    setState(prevState => calculate(prevState, btn));
+  }
+ 
+  const { total, next } = state;
+  let result = 0;
+  if (total === null && next !== null) {
+    result = next;
+  } else if (total !== null && next === null) {
+    result = total;
   } else {
-    outcome = state.next;
+    result = next;
   }
 
-  const handleCalculation = e => {
-    setState(state => calculate(state, e.target.innerText));
-  };
-
   return (
-    <section id="calcWrapper">
-      <div id="outcome">
-        <span>{outcome}</span>
+    <div className="flex justify-around">
+      <div>
+        Some text
       </div>
-
-      <div id="button-container">
-        <div className="numbers">
-          {buttons.map(button => (
-            <button
-              type="button"
-              key={button.name}
-              className="btn"
-              onClick={handleCalculation}
-            >
-              {button.value}
-            </button>
-          ))}
-          <button
-            type="button"
-            className="btn btn-zero"
-            onClick={handleCalculation}
-          >
-            0
-          </button>
-          <button type="button" className="btn" onClick={handleCalculation}>
-            .
-          </button>
-        </div>
-        <div className="operators">
-          {operators.map(operator => (
-            <button
-              type="button"
-              key={operator.name}
-              className="btn"
-              onClick={handleCalculation}
-            >
-              {operator.value}
-            </button>
-          ))}
-        </div>
+      <div id="calculator">
+        <section className="result-pane">{result}</section>
+        <section className="keys-container">
+          {
+            keys.map(key => (
+              <Button key={key.label} label={key.label} action={handleClick} />
+            ))
+          }
+        </section>
       </div>
-    </section>
-  );
-};
+    </div>
+  )
+}
 
-export default Calculator;
+export default Calculator
