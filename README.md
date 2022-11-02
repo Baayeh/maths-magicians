@@ -11,7 +11,7 @@
 
 
 ## Live Demo
-> No Live Demo yet
+> [Demo](https://maths-magicians.vercel.app/)
 
 
 ## Getting Started
